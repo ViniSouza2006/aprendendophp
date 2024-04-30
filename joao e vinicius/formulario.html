@@ -57,29 +57,29 @@
     <body id="Corpo">
         <fieldset class="CampoForm">
             <legend>Informações</legend>
-        <Form class="Formulario" action="carros.html">
-            <label>Nome: </label><br>
-            <input type="text" required placeholder="Digite seu nome" >
+        <Form class="Formulario" action="registroconta.php" method="post">
+            <label for="nome">Nome: </label><br>
+            <input name="nome" type="text" required placeholder="Digite seu nome" >
             <br>
             <br>
-            <label>Sobrenome: </label><br>
-            <input type="text" required placeholder="Digite seu nome" >
+            <label for="sobrenome">Sobrenome: </label><br>
+            <input name="sobrenome" type="text" required placeholder="Digite seu nome" >
             <br>
             <br>
-            <label>Idade: </label><br>
-            <input type="number" required min="18" placeholder="Insira sua Idade (Min 18+)">
+            <label for="idade">Idade: </label><br>
+            <input name="idade" type="number" required min="18" placeholder="Insira sua Idade (Min 18+)">
             <br>
             <br>
-            <label>CPF: </label><br>
-            <input type="number" placeholder="ex: 000.000.000-00">
+            <label for="cpf">CPF: </label><br>
+            <input name="cpf" type="text" minlength="11" maxlength="11" placeholder="ex: 000.000.000-00">
             <br>
             <br>
-            <label>RG: </label><br>
-            <input type="number" placeholder="ex: 00.000.000-00">
+            <label for="rg">RG: </label><br>
+            <input name="rg" type="text" minlength="10" maxlength="10" placeholder="ex: 00.000.000-00">
             <br>
             <br>
-            <label>Email: </label><br>
-            <input type="email" placeholder="Usuario001@Gmail.com">
+            <label for="email">Email: </label><br>
+            <input name="email" type="email" placeholder="Usuario001@Gmail.com">
             <br>
             <br>
             </fieldset>
@@ -87,16 +87,16 @@
             <br>
             <fieldset class="CampoForm">
             <legend>Informações de Localização</legend>
-            <label>Cidade: </label><br>
-            <input type="text" placeholder="Ex: São Paulo">
+            <label for="cidade">Cidade: </label><br>
+            <input name="cidade" type="text" placeholder="Ex: São Paulo">
             <br>
             <br>
-            <label>Bairro: </label><br>
-            <input type="text" placeholder="EX: Vila Olímpia">
+            <label for="bairro">Bairro: </label><br>
+            <input name="bairro" type="text" placeholder="EX: Vila Olímpia">
             <br>
             <br>
-            <label>Rua: </label><br>
-            <input type="text" placeholder="Ex: Rua Júlio Diniz"><br>
+            <label for="rua">Rua: </label><br>
+            <input name="rua" type="text" placeholder="Ex: Rua Júlio Diniz"><br>
             <br>
             <br>
             <input id="Envio" type="submit">

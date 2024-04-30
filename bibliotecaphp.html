@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bibliotecaform</title>
+</head>
+<body>
+    <h1>Cadastro do livro</h1>
+    <form action="biblioteca.php" method="post">
+        <fieldset>
+            <legend><h2>Informações do autor</h2></legend>
+            <label for="Nomelivro">Nome do Livro</label><br>
+            <input type="text" id="Nomelivro" name="Nomelivro" placeholder="titulo"><br>
+            <label for="Autor">Autor</label><br>
+            <input type="text" id="Autor" name="Autor" placeholder="seu nome"><br>
+            <label for="CPF">CPF</label><br>
+            <input type="text" id="cpf" name="cpf" maxlength="11" placeholder="000.000.000-00"><br>
+            <label for="rg">RG</label><br>
+            <input type="text" id="rg" name="rg" maxlength="8"><br>
+            <label for="endereco_email">Email</label><br>
+            <input type="email" id="endereco_email" name="endereco_email" placeholder="email123@gmail.com"><br>
+            <label for="Nascimento">Data Nascimento</label><br>
+            <input type="date" id="Nascimento" name="Nascimento"><br><br>
+        </fieldset>
+        <fieldset>
+            <legend><h2>Informações do livro</h2></legend>
+            <label for="Npag">Numero Paginas</label><br>
+            <input type="number" id="Npag" name="Npag" min="1"><br>
+            <p>Faixa etaria</p>
+            <!-- faixa etaria -->
+            <input type="radio" id="Escolha" name="Escolha" value="Livre">
+            <label for="Livre">Livre</label><br>
+            <input type="radio" id="Escolha" name="Escolha" value="Infantil">
+            <label for="Infantil">Infantil</label><br>
+            <input type="radio" id="Escolha" name="Escolha" value="+18">
+            <label for="+18">+18</label><br>
+            <label for="descricao"><p>Deixe uma descrição</p></label>
+            <textarea id="descricao" name="descricao" rows="4" cols="50"></textarea><br><br>
+ 
+            <label for="categorias">Escolha a categoria do livro:</label>
+            <select name="categorias" id="categorias">
+                <option value="Contos">Contos</option>
+                <option value="Romances">Romances</option>
+                <option value="Biografia">Biografia</option>
+                <option value="Poesia">Poesia</option>
+                <option value="Gibis">Gibis</option>
+            </select>
+        </fieldset><br>
+        <input type="submit" value="Enviar"><br>
+        <input type="reset" value="Começar denovo">
+      </form>        
+</body>
+</html>
