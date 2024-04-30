@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        main{
+            color: rgb(255, 255, 255);
+        }
+        .Formulario{
+            margin-left: auto;
+            margin-right: auto;
+        }
+         .CampoForm{
+            background-color: rgb(34, 36, 36);
+            padding: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%;
+         }
+         #Corpo{
+
+            background: rgb(22, 29, 36);
+         }
+         header{
+            color: white;
+            background-color: black;
+            height: 100px;
+            text-align: center;
+        }
+        #logo{
+            float: left;
+            padding-left: 2%;
+            padding-top: 2%;
+        }
+        #conta{
+            float: right;
+            padding-right: 2%;
+            padding-top: 3%;
+        }
+        #Envio{
+            color: white;
+            background-color: rgb(43, 42, 42);
+        }
+    </style>
+    <header>
+        <h1 id="logo">AutomotiveDistrict</h1>
+</header>
+</head>
+<main>
+    <body id="Corpo">
+        <fieldset class="CampoForm">
+            <legend>Informações</legend>
+        <Form class="Formulario" action="carros.html">
+            <label>Nome: </label><br>
+            <input type="text" required placeholder="Digite seu nome" >
+            <br>
+            <br>
+            <label>Sobrenome: </label><br>
+            <input type="text" required placeholder="Digite seu nome" >
+            <br>
+            <br>
+            <label>Idade: </label><br>
+            <input type="number" required min="18" placeholder="Insira sua Idade (Min 18+)">
+            <br>
+            <br>
+            <label>CPF: </label><br>
+            <input type="number" placeholder="ex: 000.000.000-00">
+            <br>
+            <br>
+            <label>RG: </label><br>
+            <input type="number" placeholder="ex: 00.000.000-00">
+            <br>
+            <br>
+            <label>Email: </label><br>
+            <input type="email" placeholder="Usuario001@Gmail.com">
+            <br>
+            <br>
+            </fieldset>
+            <br>
+            <br>
+            <fieldset class="CampoForm">
+            <legend>Informações de Localização</legend>
+            <label>Cidade: </label><br>
+            <input type="text" placeholder="Ex: São Paulo">
+            <br>
+            <br>
+            <label>Bairro: </label><br>
+            <input type="text" placeholder="EX: Vila Olímpia">
+            <br>
+            <br>
+            <label>Rua: </label><br>
+            <input type="text" placeholder="Ex: Rua Júlio Diniz"><br>
+            <br>
+            <br>
+            <input id="Envio" type="submit">
+            </fieldset>
+            </Form>
+            
+    </body>
+</main>
+</html>
