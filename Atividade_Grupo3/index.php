@@ -1,5 +1,5 @@
 <?php
+ $Escreva = $_POST['Escreva'];
 
- <h1>Ola</h1>
- 
+ echo '<h2>Voc~e Escreveu:</h2>' . $Escreva;
 ?>
