@@ -6,9 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="index.php" method="post"> 
-        <label for="Insira um Valor"></label>
-       <input name="Escreva" type="text">
-    </form>
+    <fieldset id="Campo">
+        <form action="index.php" method="post">
+            <label>Insira Um Valor de 1 a 20: </label>
+            <input min="0" max="20" name="valor" type="number"><br>
+            <br>
+            <label>Insira Um Valor de 1 a 20: </label>
+            <input min="0" max="20" name="valor2" type="number"><br>
+            <br>
+            <input type="submit" value="Enviar">
+        </form>
+    </fieldset>
 </body>
 </html>
