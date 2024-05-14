@@ -8,6 +8,7 @@
     //print ($texto02);
     echo '<br>';
 
+    //tratando datas
     $raw = '22.11.1968';
     $start = DateTime::createfromformat('d.m.Y',$raw);
     echo "Data de Inicio: " .$start->format('Y-m-d'). "\n";
