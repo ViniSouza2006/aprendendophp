@@ -24,13 +24,13 @@
 <?php
     $obj_mysqli = new mysqli(127.0.0.1, "root", "", "tutocrudphp");
 
-    if ($obj_mysqli->connect_errno)
+    if ($obj_mysqli->connect_erro)
     {
-        echo "Ocorrreu um erro na conexão com o banco de dados. ";
+        echo "Ocorrreu um erro na conexão com o banco de dados.";
         exit;
     }
 
-    mysqli_set_charset($obj_mysqli, "utf8");
+    mysqli_set_charset($obj_mysqli, 'utf8');
 
 
     if(isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST[cidade]) && isset($_POST["uf"]))
