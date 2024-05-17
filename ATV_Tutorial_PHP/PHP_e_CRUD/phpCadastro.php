@@ -24,7 +24,7 @@
 <?php
     $obj_mysqli = new mysqli(127.0.0.1, "root", "", "tutocrudphp");
 
-    if ($obj_mysqli->connect_erro)
+    if ($obj_mysqli->connect_errno)
     {
         echo "Ocorrreu um erro na conexão com o banco de dados.";
         exit;
