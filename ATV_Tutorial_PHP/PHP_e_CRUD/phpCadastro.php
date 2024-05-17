@@ -41,7 +41,7 @@
 
     mysqli_set_charset($obj_mysqli, 'utf8');
 
-
+    //Validando a existência dos dados
     if(isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["cidade"]) && isset($_POST["uf"]))
     {
         if(empty($_POST["nome"]))
@@ -52,6 +52,7 @@
                 $erro = "Campo e-mail obrigatório";
         else
         {
+            //vamos realizar o cadastro ou alteração dos dados enviados
 
             $nome = $_POST["nome"];
             $email = $_POST["email"];
