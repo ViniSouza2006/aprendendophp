@@ -22,7 +22,7 @@
 </html>
 
 <?php
-    $obj_mysqli = new mysqli(127.0.0.1, "root", "", "tutocrudphp");
+    $obj_mysqli = new mysqli(127.0.0.1, "root", " ", "tutocrudphp");
 
     if ($obj_mysqli->connect_errno)
     {
