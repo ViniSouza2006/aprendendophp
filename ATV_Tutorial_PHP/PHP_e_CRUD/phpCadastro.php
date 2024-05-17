@@ -33,14 +33,14 @@
     mysqli_set_charset($obj_mysqli, 'utf8');
 
 
-    if(isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST[cidade]) && isset($_POST["uf"]))
+    if(isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["cidade"]) && isset($_POST["uf"]))
     {
         if(empty($_POST["nome"]))
             $erro = "Campo nome obrigatório";
         else
         {
             if(empty($_POST["email"]))
-                $erro= "Campo e-mail obrigatório";
+                $erro = "Campo e-mail obrigatório";
         else
         {
             $nome = $_POST["nome"];
