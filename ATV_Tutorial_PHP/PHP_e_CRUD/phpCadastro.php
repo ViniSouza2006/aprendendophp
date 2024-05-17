@@ -6,6 +6,14 @@
     <title>CRUD com PHP, de forma simples e fácil</title>
 </head>
     <body>
+        <?php
+        if(isset($erro))
+            echo '<div style="color:#F00">'.$erro.'<div><br><br>';
+        else
+        if(isset($sucesso))
+            echo '<div style="color:#00F">'.$sucesso.'<div><br><br>';
+        ?>
+
         <form action="<?=$_Server["PHP_SELF"]?>" method="POST">
             <label for="">Nome: </label><br>
             <input type="text" name="nome" placeholder="Digite seu Nome"><br><br>
@@ -14,7 +22,8 @@
             <label for="">Cidade: </label>
             <input type="text" name="cidade" placeholder="Digite o Nome da Sua Cidade"><br><br>
             <label for="">UF:</label>
-            <input type="text" name="" size="2" placeholder="UF"><br><br>
+            <input type="text" name="" size="2" placeholder="UF">
+            <br><br>
             <input type="hidden" value="-1" name="id">
             <button type="submit">Cadastrar</button>
         </form>
@@ -22,7 +31,7 @@
 </html>
 
 <?php
-    $obj_mysqli = new mysqli(127.0.0.1, "root", " ", "tutocrudphp");
+    $obj_mysqli = new mysqli("127.0.0.1", "root", " ", "tutocrudphp");
 
     if ($obj_mysqli->connect_errno)
     {
@@ -43,10 +52,11 @@
                 $erro = "Campo e-mail obrigatório";
         else
         {
+
             $nome = $_POST["nome"];
             $email = $_POST["email"];
             $cidade = $_POST["cidade"];
-            $uf = $_POST["uf"]
+            $uf = $_POST["uf"];
 
             $stmt = $obj_mysqli->prepare("INSERT INTO 'cliente' ('nome', 'email','cidade', 'uf') VALUES (?,?,?,?)");
             $stmt->bind_param('ssss', $nome, $email, $cidade, $uf);
