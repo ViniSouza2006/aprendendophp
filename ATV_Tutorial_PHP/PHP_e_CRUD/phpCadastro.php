@@ -13,20 +13,21 @@
         if(isset($sucesso))
             echo '<div style="color:#00F">'.$sucesso.'<div><br><br>';
         ?>
-
+        <fieldset>
         <form action="<?=$_SERVER["PHP_SELF"]?>" method="POST">
             <label for="">Nome: </label><br>
             <input type="text" name="nome" placeholder="Digite seu Nome"><br><br>
             <label for="">E-mail: </label><br>
             <input type="email" name="email" placeholder="Digite seu Email"><br><br>
-            <label for="">Cidade: </label>
+            <label for="">Cidade: </label><br>
             <input type="text" name="cidade" placeholder="Digite o Nome da Sua Cidade"><br><br>
-            <label for="">UF:</label>
+            <label for="">UF:</label><br>
             <input type="text" name="" size="2" placeholder="UF">
             <br><br>
             <input type="hidden" value="-1" name="id">
             <button type="submit">Cadastrar</button>
         </form>
+        </fieldset>
         <br>
         <br>
         <table>
@@ -39,8 +40,8 @@
                <td><strong>#</strong></td> 
             </tr>
             <?php
-            $result = $obj_mysqli->query("SELECT * FROM 'cliente'");
-            while ($aux_query = result->fetch_assoc())
+            $result = $obj_mysqli->query("SELECT * FROM `cliente`");
+            while ($aux_query = $result->fetch_assoc())
             {
                 echo '<tr>';
                 echo  ' <td>'.$aux_query["Id"]; 
@@ -84,7 +85,7 @@
             $cidade = $_POST["cidade"];
             $uf = $_POST["uf"];
 
-            if(id == -1)
+            if($id == -1)
             {
 
             $stmt = $obj_mysqli->prepare("INSERT INTO `cliente` (`nome`, `email`,`cidade`, `uf`) VALUES (?,?,?,?)");
@@ -101,7 +102,7 @@
             }
         }
         else
-        if(is_numeric($id) && $id >== 1)
+        if(is_numeric($id) && $id >= 1)
         {
             $stmt = $obj_mysqli->prepare("UPDATE `cliente` SET `nome`=?, `email`=?, `cidade`=?, `uf`=? WHERE id = ?");
             $stmt->bind_param('ssssi', $nome, $email, $cidade, $uf, $id);
