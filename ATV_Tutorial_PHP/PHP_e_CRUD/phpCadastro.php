@@ -43,11 +43,11 @@
             while ($aux_query = result->fetch_assoc())
             {
                 echo '<tr>';
-                echo  ' <td>'.$aux_query["Id"]  
-                echo  ' <td>'.$aux_query["Nome"]  
-                echo  ' <td>'.$aux_query["Email"]  
-                echo  ' <td>'.$aux_query["Cidade"]  
-                echo  ' <td>'.$aux_query["UF"]  
+                echo  ' <td>'.$aux_query["Id"]; 
+                echo  ' <td>'.$aux_query["Nome"];  
+                echo  ' <td>'.$aux_query["Email"];  
+                echo  ' <td>'.$aux_query["Cidade"];  
+                echo  ' <td>'.$aux_query["UF"];  
                 echo  ' <td><a href="'.$_SERVER["PHP_SELF"].'?id='.$aux_query["Id"].'">Editar</a></td>';  
                 echo  '</tr>';  
             }
@@ -118,7 +118,7 @@
             }
             else
             {
-                $erro = ""
+                
         }
     }
     }
