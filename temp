@@ -1,0 +1,9 @@
+ $id=isset($_GET['id'])?(int)$_GET['id']:0;
+            $sql="SELECT * FROM users WHERE user_id={$id}";
+            $result=$con->query($sql);
+            if($result->num_row<1){
+                header('location: index.php');
+                exit;
+            }
+            $row=$result->fetch_assoc();
+            ?>
