@@ -19,9 +19,9 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
     <span class="incon-bar"></span>
-    </button>
+    </button><br>
     <a class="navbar-brand" href="index.php">CRUD</a>
-    <div>
+    </div>
     <ul class="nav navbar-nav">
     <li class="active"><a href="index.php">Home</a></li>
     <li><a href="insert.php">Add User</a></li>
