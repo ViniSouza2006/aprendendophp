@@ -15,13 +15,15 @@ if($result->num_rows > 0)
     ?>
     <h2>List of all users</h2>
     <table class="table-bordered table-striped"></table>
-    <tr>
-        <td>Firstname</td>
-        <td>Lastname</td>
-        <td>Address</td>
-        <td>Contact</td>
-        <td width></td>
-        <td></td>
-    </tr>
+        <tr>
+            <td>Firstname</td>
+            <td>Lastname</td>
+            <td>Address</td>
+            <td>Contact</td>
+            <td width></td>
+            <td></td>
+        </tr>
+<?php
+
+
 }
-?>
