@@ -24,6 +24,4 @@ if($result->num_rows > 0)
             <td></td>
         </tr>
 <?php
-
-
 }
