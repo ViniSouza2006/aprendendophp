@@ -8,7 +8,7 @@ require_once 'header.php';
         if(empty($_POST['firstname']) || empty($_POST['lastname']) ||
         empty($_POST['address']) || empty($_POST['contact']) )
     {
-        echo "Please fillout all required fields";    
+        echo"Please fillout all required fields";    
     }else{
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];

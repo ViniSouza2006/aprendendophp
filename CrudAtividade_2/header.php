@@ -1,15 +1,14 @@
-<?php
-'<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>CRUD</title>
-    <link rel="stylesheet" type"text/css" href="https://maxcnd.boosttrapcnd.com/boosttrap/3.3.7/css/boosttrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcnd.boosttrapcnd.com/boosttrap/3.3.7/css/boosttrap.min.css">
     <style type="text/css">
     .box{
         background-color: #f0f0f0; padding:20px;
     }
-    </style>
-    </head>
+    </style></head>
     <body>
     <div class="container">
     <nav class="navbar navbar-default">
@@ -31,5 +30,4 @@
     </div><!--/.nav-collapse-->
     </div><!--/.container-fluid-->
     </nav>
-    </div>'
-?>
+    </div>

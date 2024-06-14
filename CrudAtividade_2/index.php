@@ -1,5 +1,5 @@
 <?php
-Author:samuel
+/*Author: Samuel*/
 require_once 'header.php';
 ?>
 <div class="container">
