@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-    $conexao = mysqli_connect("Localhost", "root", "");
+    $conexao = mysqli_connect("localhost", "root", "");
     mysqli_select_db($conexao, "tutocrudphp");
     ?>
 <html lang="pt-br">
@@ -11,9 +11,9 @@
 </head>
 <body>
     <?php
-    $nome = $_POST ["nome"];
-    $user = $_POST ["user"];
-    $pass = $_POST ["pass"];
+    $nome = $_POST["nome"];
+    $user = $_POST["user"];
+    $pass = $_POST["pass"];
 
     $inserir = "INSERT INTO usuario (id, nome, usuario, senha) VALUES (NULL, '$nome', '$user', '$pass');";
     mysqli_query($conexao, $inserir) or die (mysqli_error($conexao));
