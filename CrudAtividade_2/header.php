@@ -1,33 +1,62 @@
+<?php
+require_once 'connect.php'; 
+require_once 'header.php'; 
+?>
+<div class="container">  
+        <?php 
+            if(isset($_POST['update'])){ 
+            if( empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['address']) || empty($_POST['contact']) )
+            { 
+                echo "Please fillout all required fields";
+               
+            }else{ 
+                    $firstname = $_POST['firstname']; 
+                    $lastname     = $_POST['lastname']; 
+                    $address      = $_POST['address']; 
+                    $contact      = $_POST['contact']; 
+                    $sql = "UPDATE users SET firstname='{$firstname}', lastname = '{$lastname}', address = '{$address}', contact = '{$contact}' WHERE user_id=". $_POST['userid'];
+                    
+                    if( $con->query($sql) === TRUE ){ 
+                            echo "<div class='alert alert-success'>Successfully updated user</div>"; 
+                    }else{
+                            echo "<div class='alert alert-danger'>Error: There was an error while updating user info</div>"; // Se a query falhar, vai exibir a mensagem de erro.
+                    }
+                }
+            }
+            $id = isset($_GET['id']) ? (INT) $_GET['id'] : 0; 
+            $sql = "SELECT * FROM users WHERE user_id={$id}"; 
+            $result = $con->query($sql); 
+            if($result->num_rows < 1) { 
+                    header('Location: index.php'); 
+                    exit; 
+            }
+            $row = $result->fetch_assoc();
+            ?>
+            <div class="row"> 
+            <div class="col-md-6 col-md-offset-3">
+                    <div class="box">
+                            
+                            <h3><i class="glyphicon glyphicon-plus"></i>&nbsp;MODIFY User</h3>
+                            <form action="" method="POST">
+                                    <input type="hidden" value="<?php echo $row['user_id']; ?>" name="userid">
+                                    
+                                    <label for="firstname">Firstname</label>
+                                    <input type="text" id="firstname" name="firstname" value="<?php echo $row['firstname']; ?>" class="form-control"><br>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>CRUD</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcnd.boosttrapcnd.com/boosttrap/3.3.7/css/boosttrap.min.css">
-    <style type="text/css">
-    .box{
-        background-color: #f0f0f0; padding:20px;
-    }
-    </style></head>
-    <body>
-    <div class="container">
-    <nav class="navbar navbar-default">
-    <div class="container-fluid">
-    <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-    <span class="sr-only">Toggle navigation</span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="incon-bar"></span>
-    </button><br>
-    <a class="navbar-brand" href="index.php">CRUD</a>
-    </div>
-    <ul class="nav navbar-nav">
-    <li class="active"><a href="index.php">Home</a></li>
-    <li><a href="insert.php">Add User</a></li>
-    <li><a href="users.php">All Users</a></li>
-    </ul>
-    </div><!--/.nav-collapse-->
-    </div><!--/.container-fluid-->
-    </nav>
-    </div>
+                                    <label for="lastname">Lastname</label>
+                                    <input type="text" id="lastname" name="lastname" value="<?php echo $row['lastname']; ?>" class="form-control"><br>
+
+                                    <label for="address">Address</label>
+                                    <textarea rows="4" name="address" class="form-control"><?php echo $row['address']; ?></textarea><br>
+
+                                    <label for="contact">Contact</label>
+                                    <input type="text" name="contact" id="contact" value="<?php echo $row['contact']; ?>" class="form-control"><br>
+                                    <br>
+                                    <input type="submit" name="update" class="btn btn-success" value="Update">
+                            </form>
+                    </div>
+            </div>
+            </div>
+</div>
+<?php
+require_once 'footer.php';

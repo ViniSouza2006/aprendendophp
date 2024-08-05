@@ -25,6 +25,9 @@ if($result->num_rows > 0)
         </tr>
 <?php
 while($row=$result->fetch_assoc()){
+    echo "<form action='' method='POST'>";      
+    echo "<input type='hidden' value='". $row['user_id']."' name='userid'/>";
+
     echo"<tr>";
     echo"td".$row['firstname']."</td>";
     echo"td".$row['lastname']."</td>";
