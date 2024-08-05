@@ -32,6 +32,10 @@
         <label for="">Password</label>
         <input type="password" name="password" id="password">
         <input type="button" value="Login" onclick="formhash(this.form, this.form.password);">
+        <input type="button" 
+        value="Login" 
+        onclick="formhash(this.form, this.form.password);">
+
     </form>
     <p>If you don't have a login, please <a href="register.php">Register</a></p>
     <p>If you are done, please <a href="includes/logout.php">Log Out</a>.</p>

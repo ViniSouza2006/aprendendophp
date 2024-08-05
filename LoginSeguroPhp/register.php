@@ -1,59 +1,51 @@
 <?php
-include_once 'includes/register.inc.php';
-include_once 'includes/register.php';
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Login: Registration Form</title>
-    <script type="text/JavaScript" src="js/sha512.js"></script>
-    <script type="text/JavaScript" scr="js/forms.js"></script>
-    <link rel="stylesheet" href="styles/main.css"/>
-</head>
-<body>
-    <!-- Registration form to be output if the POST variable are not set or if the registration script caused an error. -->
-    <h1>Register with us</h1>
-    <?php
-    if (!empty($error_msg)){
-        echo $error_msg;
+include_once 'db_connect.php';
+include_once 'psl-config.php';
+ 
+$error_msg = "";
+ 
+if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error_msg .= '<p class="error">O endereço de email digitado não é válido</p>';
     }
-    ?>
-    <ul>
-        <li>Os nome de úsuario devem conter apenas dígitos, letras maiúsculas e minúsculas e underlines ("_")
-        <li>Emails devem seguir um formato válido para email.
-        <li>As senhas devem ter no mínimo 6 caracteres.
-        <li>As senhas devem conter
-        <ul>
-            <li>Pelo menos uma letra maiúscula (A..Z)</li>
-            <li>Pelo menos uma letra minúscula (a..z)</li>
-            <li>Pelo menos um número (0..9)</li>
-        </ul>
-        <li>Sua senha deve conferir exatamente</li>
-        </ul>
-        <form action="<?php echo esc_url($_SEVER['PHP_SELF']);?>">
-            method="post"
-            name="registration_form">
-        Username: <input type='text'
-            name='username'
-            id='username'/><br>
-            Email:<input type="text" name="email" id="email"/><br>
-            Password: <input type="password"
-                name="password"
-                id="password"/><br>
-            Confirm password: <input type="password"
-                name="confirmpwd"
-                id="confirmpwd"/><br>
-            <input type="button"
-            value="Register"
-            onclick="return regformhash(this.form,
-                this.form.username,
-                this.form.email,
-                this.form.password,
-                this.form.confirmpwd);"/>
-        </form>
-        <p>Return to the <a href="index.php">Login page</a>.</p>
-</body>
-</html>
+ 
+    $password = filter_input(INPUT_POST, 'p', FILTER_SANITIZE_STRING);
+    if (strlen($password) != 128) {
+
+        $error_msg .= '<p class="error">Invalid password configuration.</p>';
+    }
+ 
+    $prep_stmt = "SELECT id FROM members WHERE email = ? LIMIT 1";
+    $stmt = $mysqli->prepare($prep_stmt);
+ 
+    if ($stmt) {
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $stmt->store_result();
+ 
+        if ($stmt->num_rows == 1) {
+            $error_msg .= '<p class="error">A user with this email address already exists.</p>';
+        }
+    } else {
+        $error_msg .= '<p class="error">Database error</p>';
+    }
+ 
+    if (empty($error_msg)) {
+
+        $random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE));
+ 
+        $password = hash('sha512', $password . $random_salt);
+ 
+        if ($insert_stmt = $mysqli->prepare("INSERT INTO members (username, email, password, salt) VALUES (?, ?, ?, ?)")) {
+            $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt);
+            if (! $insert_stmt->execute()) {
+                header('Location: ../error.php?err=Registration failure: INSERT');
+            }
+        }
+        header('Location: ./register_success.php');
+    }
+}
 
